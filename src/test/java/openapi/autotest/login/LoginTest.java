@@ -1,6 +1,7 @@
 package openapi.autotest.login;
 
 import dto.login.LoginRequestDTO;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+@Feature("Login")
 public class LoginTest extends LoginTestBase{
 
     @Story("Smoke")
@@ -37,6 +39,7 @@ public class LoginTest extends LoginTestBase{
         );
     }
 
+    @Story("Negtive tests")
     @DisplayName("Send invalid login request")
     @ParameterizedTest(name = "{0}")
     @MethodSource(value = "invalidLoginProvider")
@@ -45,7 +48,7 @@ public class LoginTest extends LoginTestBase{
         matcher.assertBadRequest(response);
     }
 
-    @Story("Smoke")
+    @Story("Negtive tests")
     @DisplayName("Send only email for login request")
     @Test
     public void sendLoginRequestOnlyMail() {
@@ -54,7 +57,7 @@ public class LoginTest extends LoginTestBase{
         matcher.assertBadRequest(response);
     }
 
-    @Story("Smoke")
+    @Story("Negtive tests")
     @DisplayName("Send only pass for login request")
     @Test
     public void sendLoginRequestOnlyPass() {

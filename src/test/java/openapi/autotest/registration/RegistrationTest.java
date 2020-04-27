@@ -40,6 +40,7 @@ public class RegistrationTest extends RegistrationTestBase {
         );
     }
 
+    @Story("Negtive tests")
     @DisplayName("Send invalid registration request")
     @ParameterizedTest(name = "{0}")
     @MethodSource(value = "invalidRegistrationProvider")
@@ -48,7 +49,7 @@ public class RegistrationTest extends RegistrationTestBase {
         matcher.assertBadRequest(response);
     }
 
-    @Story("Smoke")
+    @Story("Negtive tests")
     @DisplayName("Send only email for registration request")
     @Test
     public void sendRegistrationRequestOnlyMail() {
@@ -58,7 +59,7 @@ public class RegistrationTest extends RegistrationTestBase {
         matcher.assertMissingPassError(response);
     }
 
-    @Story("Smoke")
+    @Story("Negtive tests")
     @DisplayName("Send only pass for registration request")
     @Test
     public void sendRegistrationRequestOnlyPass() {
